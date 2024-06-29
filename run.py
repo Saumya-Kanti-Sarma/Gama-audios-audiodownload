@@ -1,5 +1,5 @@
-from audio_downloader import app
+from audio_downloader import create_app
 
-App = app()
+App = create_app()
 
 
