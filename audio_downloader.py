@@ -39,7 +39,7 @@ def Home():
 @app.route("/api/audiodownload/<video_id>", methods=['GET'])
 def download_audio(video_id):
     try:
-        yt = YouTube(f"https://www.youtube.com/{video_id}")
+        yt = YouTube(f"https://youtu.be/{video_id}")
         audio_stream = yt.streams.filter(only_audio=True).get_by_itag(140)
         
         if audio_stream:
