@@ -1,18 +1,23 @@
 from flask import Flask, jsonify, send_file, request
+from flask_cors import CORS
 from pytube import YouTube
 import os
 
 app = Flask(__name__)
+CORS(app) #using CORS to be able to fetch data easily
 
 @app.route('/')
 def hello_world():
-    return jsonify({
+    response =  jsonify({
         "msg": "hello coders.."
     })
+    response.headers.add("Content-Type", 'application/json')
+    return response
 
 @app.route('/api/<id>')
 def get_audio_url(id):
-    URL = f"ttps://www.youtube.com/watch?v={id}"
+    # kJQP7kiw5Fk&pp=ygUJZGVzcGFjaXRv
+    URL = f"https://www.youtube.com/watch?v={id}"
     try:
         yt = YouTube(f"{URL}")
         audio_streams = yt.streams.filter(only_audio=True).get_by_itag(251)
