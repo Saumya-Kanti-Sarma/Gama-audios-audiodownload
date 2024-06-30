@@ -1,3 +1,2 @@
-import audio_downloader
-
-app = audio_downloader.app
+import main
+app = main.app
