@@ -12,7 +12,7 @@ def hello_world():
 
 @app.route('/api/<id>')
 def get_audio_url(id):
-    URL = f"https://youtu.be/{id}"
+    URL = f"ttps://www.youtube.com/watch?v={id}"
     try:
         yt = YouTube(f"{URL}")
         audio_streams = yt.streams.filter(only_audio=True).get_by_itag(251)
