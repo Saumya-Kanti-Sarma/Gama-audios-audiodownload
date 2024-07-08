@@ -44,5 +44,37 @@ def get_audio_url():
             "status" : yt.title + " download un-successfull",
         })
 
+@app.route('/api/mp3/info')
+def get_audio_info():
+    search = request.args.get('search')
+    URL = search
+    try:
+        yt = YouTube(URL)
+        thumbnail = yt.thumbnail_url
+        views = yt.views
+        title = yt.title
+        channel = yt.channel_url
+        description = yt.description
+        keyword = [yt.keywords]
+        publish_date = yt.publish_date
+        return jsonify({
+            "status-code" : 200,
+            "thumbnail" : thumbnail,
+            "views" : views,
+            "title" : title,
+            "channel" : channel,
+            "description" : description,
+            "keyword" : keyword,
+            "publish_date" : publish_date,
+
+        })
+
+    except Exception as e:
+        return jsonify({
+            "We have an error": str(e),
+            "status-code" : 505,
+            "status" : yt.title + " download un-successfull",
+        })
+
 if __name__ == '__main__':
     app.run(debug=True)
