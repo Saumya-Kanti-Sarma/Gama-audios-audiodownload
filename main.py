@@ -11,6 +11,7 @@ def hello_world():
     response =  jsonify({
         "msg": "hello coders..",
         "Mp3": "https://audiodownload.onrender.com/api/mp3/link?url=",
+        "Mp3_search": "https://audiodownload.onrender.com/api/mp3/info?search=",
         "mp4": "Processing..",
         "status": 200
     })
