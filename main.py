@@ -10,19 +10,20 @@ CORS(app) #using CORS to be able to fetch data easily
 def hello_world():
     response =  jsonify({
         "msg": "hello coders..",
-        "Mp3": "/api/mp3/",
+        "Mp3": "https://audiodownload.onrender.com/api/mp3/link?url=",
         "mp4": "Processing..",
         "status": 200
     })
     response.headers.add("Content-Type", 'application/json')
     return response
 
-@app.route('/api/mp3/<id>')
-def get_audio_url(id):
+@app.route('/api/mp3/link')
+def get_audio_url():
     # kJQP7kiw5Fk&pp=ygUJZGVzcGFjaXRv
-    URL = f"https://www.youtube.com/watch?v={id}"
+    url = request.args.get('url')
+    URL = url
     try:
-        yt = YouTube(f"{URL}")
+        yt = YouTube(URL)
         audio_streams = yt.streams.filter(only_audio=True).get_by_itag(251)
         download_path = os.path.join(os.path.expanduser("~"), "Downloads")
 
