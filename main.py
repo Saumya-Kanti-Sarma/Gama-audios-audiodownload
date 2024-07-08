@@ -40,7 +40,7 @@ def get_audio_url(id):
         return jsonify({
             "We have an error": str(e),
             "status-code" : 505,
-            "status" : "download un-successfull",
+            "status" : yt.title + " download un-successfull",
         })
 
 if __name__ == '__main__':
