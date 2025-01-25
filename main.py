@@ -18,7 +18,7 @@ def hello_world():
 def get_audio_url(url):
     try:
         validUrl = "https://youtu.be/" + url
-        yt = YouTube(validUrl,"WEB")
+        yt = YouTube(validUrl,use_po_token=True)
         audio_stream = [
             {
                 "itag": streams.itag,
@@ -42,7 +42,7 @@ def get_audio_url(url):
 def download(itag, url):
     try:
         validUrl = "https://youtu.be/" + url
-        yt = YouTube(validUrl, "WEB")
+        yt = YouTube(validUrl, use_po_token=True)
         download_stream = yt.streams.get_by_itag(itag)
         
         # Get the direct download URL
